@@ -44,6 +44,8 @@ const login = async (req, res) => {
   }
 };
 
+///Refresh Access token////////////////
+
 const refresh = async (req, res) => {
   const cookies = req.cookies;
 
@@ -64,9 +66,11 @@ const refresh = async (req, res) => {
 
       if (!foundUser) return res.status(401).json({ message: "Unauthorized" });
 
+      const username = foundUser.dataValues.username;
+
       const accessToken = jwt.sign(
         {
-          username: foundUser.username,
+          username: decoded.username,
         },
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: "15m" }
@@ -88,4 +92,4 @@ const logout = async (req, res) => {
   res.json({ message: "Cookie cleared" });
 };
 
-module.exports = { login, logout };
+module.exports = { login, refresh, logout };
