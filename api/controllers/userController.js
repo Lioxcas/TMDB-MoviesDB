@@ -6,7 +6,6 @@ class userController {
   static async getAll(req, res) {
     const allUsers = await User.findAll();
     if (!allUsers) return res.sendStatus(400);
-    console.log("ALL", allUsers);
     res.send(allUsers).status(200);
   }
 
