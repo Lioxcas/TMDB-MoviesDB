@@ -3,3 +3,24 @@
   margin: 0 auto;
   padding: 2rem;
 }
+body {
+  background: black;
+}
+
+.navbar {
+  position: fixed;
+  color: white;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px; /* adjust the height as needed */
+  background-color: #333;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form {
+  padding-top: 70px;
+  color: white;
+}
