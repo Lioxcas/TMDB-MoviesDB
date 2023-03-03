@@ -8,7 +8,6 @@ const useRefreshToken = () => {
       withCredentials: true,
     });
     setAuth((prev) => {
-      console.log("RESPONSE FROM REFRESH", response);
       return {
         ...prev,
         username: response.data.username,

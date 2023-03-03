@@ -9,6 +9,7 @@ body {
 
 .navbar {
   position: fixed;
+  color: white;
   top: 0;
   left: 0;
   right: 0;
@@ -17,20 +18,6 @@ body {
   padding: 0;
   display: flex;
   justify-content: flex-end;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: auto;
-  gap: 2px;
-  padding-top: 70px;
-}
-
-.poster {
-  max-width: 50vw;
-  height: auto;
-  text-align: center;
 }
 
 .form {

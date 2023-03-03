@@ -1,0 +1,15 @@
+import React from "react";
+import SingleContent from "./SingleContent";
+
+const MovieList = ({ movies }) => {
+  return (
+    <div className="flex pb-5 px-5 overflow-x-auto ">
+      {movies &&
+        movies.map((movie, id) => {
+          return <SingleContent key={id} {...movie} />;
+        })}
+    </div>
+  );
+};
+
+export default MovieList;
