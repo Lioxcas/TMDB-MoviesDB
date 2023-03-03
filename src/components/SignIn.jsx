@@ -25,7 +25,6 @@ const SignIn = () => {
         }
       );
       setAuth(response.data);
-      console.log(response);
       navigate("/");
     } catch (error) {
       console.error(error);
@@ -33,27 +32,35 @@ const SignIn = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form">
-      <label>
-        Email:
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        Password:
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
-      <br />
-      <button type="submit">Sign In</button>
-      <br />
+    <form onSubmit={handleSubmit} className="flex flex-col items-center pt-16 ">
+      <div className="flex flex-col items-center w-1/3 h-60 rounded-xl bg-purple-500 justify-center">
+        <label className="text-xl text-gray-900">
+          Email:
+          <input
+            className="focus:outline-none focus:ring focus:ring-purple-300 sm:w-auto w-64 mb-2 ml-10 rounded-sm text-white p-1 pl-2 bg-gray-800"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+
+        <label className="text-xl text-gray-900">
+          Password:
+          <input
+            type="password"
+            className="focus:outline-none focus:ring focus:ring-purple-300 sm:w-auto  w-64 rounded-sm ml-1 text-white p-1 pl-2 bg-gray-800"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </label>
+      </div>
+
+      <button
+        type="submit"
+        className="text-sm px-4 py-2 leading-none border rounded text-purple-500 border-purple-500 hover:border-transparent hover:text-white hover:bg-purple-500 mt-4 lg:mt-4 ml-2"
+      >
+        Sign In
+      </button>
     </form>
   );
 };

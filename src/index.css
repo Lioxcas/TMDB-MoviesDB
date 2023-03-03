@@ -1,14 +1,19 @@
 @import "semantic-ui-css/semantic.min.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  color: white;
+}
 
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -26,6 +31,31 @@ body {
   box-shadow: 0 1px 2px 0 rgb(34 36 38 / 15%);
   border-radius: 0.28571429rem;
   min-height: 2.85714286em;
+  z-index: 100;
 }
 
+.banner {
+  width: 600px;
+  height: 85vh;
+  background-size: cover;
+  background-position: top center;
+  box-shadow: 1px 1px 1px 5vh rgba(0, 0, 0, 1) inset;
+  object-fit: contain;
+}
 
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 800, "GRAD" 200, "opsz" 48;
+  color: red;
+  font-size: 1.75rem;
+}
+
+.material-symbols-outlined-2 {
+  font-variation-settings: "FILL" 1, "wght" 800, "GRAD" 200, "opsz" 48;
+  color: red;
+  font-size: 1.75rem;
+}
+
+.material-symbols-outlined:hover {
+  font-variation-settings: "FILL" 1, "wght" 800, "GRAD" 200, "opsz" 48;
+  color: #e71e0f;
+}
