@@ -16,7 +16,7 @@ const SignIn = () => {
 
     try {
       const response = await axios.post(
-        `${process.env.SITE}/api/auth/`,
+        `/api/auth/`,
         {
           email,
           password,
