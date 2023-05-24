@@ -6,10 +6,13 @@ const useRefreshToken = () => {
   const { setAuth } = useAuth();
   const { setUser } = useUser();
   const refresh = async () => {
-    const response = await axios.get(`${process.env.SITE}/api/auth/refresh`, {
-      headers: { "Content-Type": "application/json" },
-      withCredentials: true,
-    });
+    const response = await axios.get(
+      `https://bespoke-truffle-3baa6f.netlify.app/api/auth/refresh`,
+      {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      }
+    );
     setAuth((prev) => {
       return {
         ...prev,
