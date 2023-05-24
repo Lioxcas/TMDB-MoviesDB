@@ -21,17 +21,23 @@ export const MoreInfo = () => {
 
   const toggleFavorite = () => {
     if (isFavorited) {
-      axios.delete(`${process.env.SITE}/api/favorites/${id}`, {
-        data: {
-          username: auth.username,
-        },
-      });
+      axios.delete(
+        `https://bespoke-truffle-3baa6f.netlify.app/api/favorites/${id}`,
+        {
+          data: {
+            username: auth.username,
+          },
+        }
+      );
       removeFavorite(id);
       setIsFavorited(false);
     } else {
-      axios.post(`${process.env.SITE}/api/favorites/${id}`, {
-        username: auth.username,
-      });
+      axios.post(
+        `https://bespoke-truffle-3baa6f.netlify.app/api/favorites/${id}`,
+        {
+          username: auth.username,
+        }
+      );
       addFavorite(id);
       setIsFavorited(true);
     }

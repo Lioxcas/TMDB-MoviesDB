@@ -13,7 +13,7 @@ const GetFavs = () => {
 
   const favorites = async () => {
     const res = await axios.get(
-      `${process.env.SITE}/api/favorites/${username}`
+      `https://bespoke-truffle-3baa6f.netlify.app/api/favorites/${username}`
     );
     setFavs(res.data);
   };
@@ -25,11 +25,14 @@ const GetFavs = () => {
   const deleteFav = async (id) => {
     try {
       removeFavorite(id);
-      await axios.delete(`${process.env.SITE}/api/favorites/${id}`, {
-        data: {
-          username: username,
-        },
-      });
+      await axios.delete(
+        `https://bespoke-truffle-3baa6f.netlify.app/api/favorites/${id}`,
+        {
+          data: {
+            username: username,
+          },
+        }
+      );
       setTimeout(() => {
         favorites();
       }, 350);
