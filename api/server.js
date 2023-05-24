@@ -17,7 +17,7 @@ app.use("/", express.static(path.join(__dirname, "public")));
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://bespoke-truffle-3baa6f.netlify.app",
     allowedHeaders: ["Content-Type", "SameSite", "withCredentials"],
     credentials: true,
   })
