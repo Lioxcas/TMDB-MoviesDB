@@ -17,7 +17,7 @@ const Register = () => {
 
     if (password === confirmPassword) {
       axios
-        .post("/signUp", {
+        .post(`${process.env.SITE}/api/users/signUp`, {
           username,
           email,
           password,
