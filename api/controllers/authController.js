@@ -36,11 +36,16 @@ const login = async (req, res) => {
 
     res.cookie("refreshT", refreshToken, {
       httpOnly: true,
-      SameSite: "None",
+      SameSite: "lax",
       secure: true,
+
       maxAge: 24 * 60 * 60 * 1000,
     });
-    res.json({ username: foundUser.username, accessToken });
+    res.json({
+      username: foundUser.username,
+      favorites: foundUser.favorites,
+      accessToken,
+    });
   }
 };
 
@@ -48,7 +53,6 @@ const login = async (req, res) => {
 
 const refresh = async (req, res) => {
   const cookies = req.cookies;
-
   if (!cookies?.refreshT)
     return res.status(401).json({ message: "Unauthorized" });
 
@@ -67,6 +71,7 @@ const refresh = async (req, res) => {
       if (!foundUser) return res.status(401).json({ message: "Unauthorized" });
 
       const username = foundUser.dataValues.username;
+      const favorites = foundUser.dataValues.favorites;
 
       const accessToken = jwt.sign(
         {
@@ -75,7 +80,7 @@ const refresh = async (req, res) => {
         process.env.ACCESS_TOKEN_SECRET,
         { expiresIn: "15m" }
       );
-      res.json({ username, accessToken });
+      res.json({ username, favorites, accessToken });
     }
   );
 };
@@ -83,12 +88,9 @@ const refresh = async (req, res) => {
 const logout = async (req, res) => {
   const cookies = req.cookies;
   if (!cookies?.refreshT) return res.sendStatus(204);
-
   res.clearCookie("refreshT", {
     httpOnly: true,
-    SameSite: "None",
   });
-
   res.json({ message: "Cookie cleared" });
 };
 
