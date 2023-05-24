@@ -24,9 +24,13 @@ const Navbar = () => {
 
   const handleSignOut = async () => {
     try {
-      await axios.post(`${process.env.SITE}/api/auth/logout`, null, {
-        withCredentials: true,
-      });
+      await axios.post(
+        `https://bespoke-truffle-3baa6f.netlify.app/api/auth/logout`,
+        null,
+        {
+          withCredentials: true,
+        }
+      );
       navigate("/");
       window.location.reload();
     } catch {

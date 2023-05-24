@@ -17,7 +17,7 @@ const Register = () => {
 
     if (password === confirmPassword) {
       axios
-        .post(`${process.env.SITE}/api/users/signUp`, {
+        .post("https://bespoke-truffle-3baa6f.netlify.app/api/users/signUp", {
           username,
           email,
           password,

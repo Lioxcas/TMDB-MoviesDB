@@ -25,7 +25,7 @@ function SingleContent({
 
   const toggleFavorite = () => {
     if (isFavorited) {
-      axios.delete(`${process.env.SITE}/api/favorites/${id}`, {
+      axios.delete(`https://bespoke-truffle-3baa6f.netlify.app/api/favorites/${id}`, {
         data: {
           username: auth.username,
         },
@@ -33,7 +33,7 @@ function SingleContent({
       removeFavorite(id);
       setIsFavorited(false);
     } else {
-      axios.post(`${process.env.SITE}/api/favorites/${id}`, {
+      axios.post(`https://bespoke-truffle-3baa6f.netlify.app/api/favorites/${id}`, {
         username: auth.username,
       });
       addFavorite(id);
