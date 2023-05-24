@@ -9,6 +9,32 @@ class userController {
     res.send(allUsers).status(200);
   }
 
+  //Get user Info
+  static async getUser(req, res) {
+    const email = req.params.email;
+    console.log(email);
+    try {
+      const user = await User.findOne({
+        where: { email },
+      });
+      if (!user) res.status(400).json("User not found");
+      else {
+        const payload = {
+          email: user.email,
+          username: user.username,
+          favorites: user.favorites,
+        };
+        res.status(200).send(payload);
+      }
+    } catch (error) {
+      res
+        .status(400)
+        .json(
+          `There was an error while trying to retrieve the user, please try again,${error}`
+        );
+    }
+  }
+
   /////New User Sign Up/////
 
   static async createUser(req, res) {
