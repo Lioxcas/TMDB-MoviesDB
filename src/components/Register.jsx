@@ -1,4 +1,4 @@
-import axios from "../axios";
+import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { Form, Button, Message, Input } from "semantic-ui-react";
@@ -17,7 +17,7 @@ const Register = () => {
 
     if (password === confirmPassword) {
       axios
-        .post("/signUp", {
+        .post(`${process.env.SITE}/api/users/signUp`, {
           username,
           email,
           password,
@@ -25,7 +25,7 @@ const Register = () => {
         .then(() => {
           setShowSuccessMessage(true);
           setTimeout(() => {
-            navigate("/signin");
+            navigate(`${process.env.SITE}/api/users/signin`);
           }, 2000);
         })
         .catch((error) => console.log(error));
