@@ -24,7 +24,7 @@ const Navbar = () => {
 
   const handleSignOut = async () => {
     try {
-      await axios.post("${process.env.URL}/api/auth/logout", null, {
+      await axios.post("${process.env.SITE}/api/auth/logout", null, {
         withCredentials: true,
       });
       navigate("/");
