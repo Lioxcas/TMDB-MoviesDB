@@ -26,9 +26,6 @@ const Navbar = () => {
     try {
       await axios.post("http://localhost:3001/api/auth/logout", null, {
         withCredentials: true,
-        headers: {
-          SameSite: "None",
-        },
       });
       navigate("/");
       window.location.reload();
