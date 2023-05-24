@@ -33,10 +33,11 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex pt-8 w-full justify-center">
+      <div className="flex pt-8 ml-0 justify-center">
         {trending && trending[0] ? (
           <>
             <Banner
+              imgID={trending[0].id}
               imgUrl={trending[0].poster_path}
               title={trending[0].title}
               description={trending[0].overview}
@@ -47,8 +48,8 @@ const Home = () => {
         )}
       </div>
       {
-        <div className="">
-          <h3 className="text-xl mb-2 leading-normal ">Trending Movies</h3>
+        <div className="mt-4">
+          <h3 className="text-xl mb-2 leading-normal  ">Trending Movies</h3>
           {trending && <MovieList movies={trending} />}
         </div>
       }

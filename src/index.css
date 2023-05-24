@@ -49,12 +49,6 @@ body {
   font-size: 1.75rem;
 }
 
-.material-symbols-outlined-2 {
-  font-variation-settings: "FILL" 1, "wght" 800, "GRAD" 200, "opsz" 48;
-  color: red;
-  font-size: 1.75rem;
-}
-
 .material-symbols-outlined:hover {
   font-variation-settings: "FILL" 1, "wght" 800, "GRAD" 200, "opsz" 48;
   color: #e71e0f;

@@ -2,12 +2,14 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
+import useUser from "../hooks/useUser";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { setAuth } = useAuth();
+  const { setUser, user } = useUser();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +26,12 @@ const SignIn = () => {
           withCredentials: true,
         }
       );
+      const getUser = await axios.get(
+        `http://localhost:3001/api/users/${email}`
+      );
+
       setAuth(response.data);
+      setUser(getUser.data);
       navigate("/");
     } catch (error) {
       console.error(error);

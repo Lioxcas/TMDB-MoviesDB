@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../axios";
 import useAuth from "../../hooks/useAuth";
+import useUser from "../../hooks/useUser";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const GetFavs = () => {
   const [favs, setFavs] = useState([]);
   const navigate = useNavigate();
   const { auth } = useAuth();
+  const { user, removeFavorite } = useUser();
   const username = auth.username;
 
   const favorites = async () => {
@@ -22,6 +24,7 @@ const GetFavs = () => {
 
   const deleteFav = async (id) => {
     try {
+      removeFavorite(id);
       await axios.delete(`http://localhost:3001/api/favorites/${id}`, {
         data: {
           username: username,
