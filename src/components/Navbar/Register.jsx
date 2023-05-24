@@ -25,7 +25,7 @@ const Register = () => {
         .then(() => {
           setShowSuccessMessage(true);
           setTimeout(() => {
-            navigate(`${process.env.SITE}/api/users/signin`);
+            navigate("/signin");
           }, 2000);
         })
         .catch((error) => console.log(error));
