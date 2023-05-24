@@ -21,6 +21,7 @@ app.use(
       "https://bespoke-truffle-3baa6f.netlify.app",
       "https://main--bespoke-truffle-3baa6f.netlify.app",
     ],
+
     allowedHeaders: ["Content-Type", "SameSite", "withCredentials"],
     credentials: true,
   })
