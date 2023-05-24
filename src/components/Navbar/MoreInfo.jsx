@@ -21,7 +21,7 @@ export const MoreInfo = () => {
 
   const toggleFavorite = () => {
     if (isFavorited) {
-      axios.delete(`${process.env.URL}/api/favorites/${id}`, {
+      axios.delete(`${process.env.SITE}/api/favorites/${id}`, {
         data: {
           username: auth.username,
         },
@@ -29,7 +29,7 @@ export const MoreInfo = () => {
       removeFavorite(id);
       setIsFavorited(false);
     } else {
-      axios.post(`${process.env.URL}/api/favorites/${id}`, {
+      axios.post(`${process.env.SITE}/api/favorites/${id}`, {
         username: auth.username,
       });
       addFavorite(id);

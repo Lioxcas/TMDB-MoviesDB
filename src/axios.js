@@ -1,2 +1,2 @@
 import axios from "axios";
-export default axios.create({ baseURL: `${process.env.URL}/api/users` });
+export default axios.create({ baseURL: `${process.env.SITE}/api/users` });
