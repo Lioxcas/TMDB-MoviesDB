@@ -13,7 +13,7 @@ const GetFavs = () => {
 
   const favorites = async () => {
     const res = await axios.get(
-      `http://localhost:3001/api/favorites/${username}`
+      `${process.env.URL}/api/favorites/${username}`
     );
     setFavs(res.data);
   };
@@ -25,7 +25,7 @@ const GetFavs = () => {
   const deleteFav = async (id) => {
     try {
       removeFavorite(id);
-      await axios.delete(`http://localhost:3001/api/favorites/${id}`, {
+      await axios.delete(`${process.env.URL}/api/favorites/${id}`, {
         data: {
           username: username,
         },
