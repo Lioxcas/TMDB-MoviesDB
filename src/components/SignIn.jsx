@@ -16,7 +16,7 @@ const SignIn = () => {
 
     try {
       const response = await axios.post(
-        `/api/auth/`,
+        "https://bespoke-truffle-3baa6f.netlify.app/api/auth/",
         {
           email,
           password,
@@ -26,7 +26,9 @@ const SignIn = () => {
           withCredentials: true,
         }
       );
-      const getUser = await axios.get(`${process.env.SITE}/api/users/${email}`);
+      const getUser = await axios.get(
+        `https://bespoke-truffle-3baa6f.netlify.app/api/users/${email}`
+      );
 
       setAuth(response.data);
       setUser(getUser.data);
