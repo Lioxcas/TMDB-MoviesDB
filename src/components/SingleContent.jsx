@@ -1,8 +1,8 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
+import useUser from "../hooks/useUser";
 import { Link } from "react-router-dom";
-/* import Favorite from "../assets/Favorite.png"; */
 
 function SingleContent({
   id,
@@ -13,31 +13,59 @@ function SingleContent({
   vote_average,
 }) {
   const { auth } = useAuth();
+  const { user, addFavorite, removeFavorite } = useUser();
   const [isFavorited, setIsFavorited] = useState(false);
 
-  const setFav = () => {
-    axios.post(`http://localhost:3001/api/favorites/${id}`, {
-      username: auth.username,
+  useEffect(() => {
+    const isMovieFavorite = user.favorites.some((favorite) => {
+      return favorite === id;
     });
-    setIsFavorited(!isFavorited);
+    setIsFavorited(isMovieFavorite);
+  }, []);
+
+  const toggleFavorite = () => {
+    if (isFavorited) {
+      axios.delete(`http://localhost:3001/api/favorites/${id}`, {
+        data: {
+          username: auth.username,
+        },
+      });
+      removeFavorite(id);
+      setIsFavorited(false);
+    } else {
+      axios.post(`http://localhost:3001/api/favorites/${id}`, {
+        username: auth.username,
+      });
+      addFavorite(id);
+      setIsFavorited(!isFavorited);
+    }
   };
 
   return (
     <div className="flex flex-col min-w-max relative ">
-      {auth.username && isFavorited ? (
-        <button className="absolute mt-2 mr-1 right-0">
-          <span className=""></span>
-          {/*  <img src={favorite} /> */}
-        </button>
-      ) : (
-        <button className="absolute mt-2 mr-1 right-0" onClick={setFav}>
-          <span className="material-symbols-outlined">favorite</span>
-          {/*  <img src={favorite} /> */}
+      {/*  Si está en Fav y hay un user muestre el corazón lleno */}
+      {auth.username && isFavorited && (
+        <button className="absolute mt-2 mr-1 right-0" onClick={toggleFavorite}>
+          <span
+            className="material-symbols-outlined"
+            style={{
+              fontVariationSettings: "'FILL' 1",
+            }}
+          >
+            favorite
+          </span>
         </button>
       )}
+      {/*  Si no esta en Fav y hay un user muestre el corazón vacío */}
+      {auth.username && (
+        <button className="absolute mt-2 mr-1 right-0" onClick={toggleFavorite}>
+          <span className="material-symbols-outlined">favorite</span>
+        </button>
+      )}
+      {/*  Si no hay un user, que solo muestre las peliculas */}
       <Link to={`/${id}`}>
         <img
-          className="w-[150px] h-[225px] shadow-sm rounded-md"
+          className="w-[220px] h-[330px] shadow-sm rounded-md"
           src={`https://www.themoviedb.org/t/p/w220_and_h330_face${poster_path}`}
           alt={title}
         />

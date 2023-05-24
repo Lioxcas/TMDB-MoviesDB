@@ -2,17 +2,39 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import axios from "../../axios";
 import useAuth from "../../hooks/useAuth";
+import useUser from "../../hooks/useUser";
 import Cast from "../Cast";
 
 export const MoreInfo = () => {
   const id = useParams().id;
   const [getInfo, setGetInfo] = useState({});
   const { auth } = useAuth();
+  const { user, addFavorite, removeFavorite } = useUser();
+  const [isFavorited, setIsFavorited] = useState(false);
 
-  const setFav = () => {
-    axios.post(`http://localhost:3001/api/favorites/${id}`, {
-      username: auth.username,
+  useEffect(() => {
+    const isMovieFavorite = user.favorites.some((favorite) => {
+      return favorite === parseInt(id);
     });
+    setIsFavorited(isMovieFavorite);
+  }, []);
+
+  const toggleFavorite = () => {
+    if (isFavorited) {
+      axios.delete(`http://localhost:3001/api/favorites/${id}`, {
+        data: {
+          username: auth.username,
+        },
+      });
+      removeFavorite(id);
+      setIsFavorited(false);
+    } else {
+      axios.post(`http://localhost:3001/api/favorites/${id}`, {
+        username: auth.username,
+      });
+      addFavorite(id);
+      setIsFavorited(true);
+    }
   };
 
   useEffect(() => {
@@ -59,10 +81,26 @@ export const MoreInfo = () => {
           <span>
             <h1 className="text-5xl text-center">{title}</h1>
           </span>
-          <h3 className="text-2xl text-center">{tagline}</h3>
-          <button className="ml-auto" onClick={setFav}>
-            <span className="material-symbols-outlined">favorite</span>
-          </button>
+          <h3 className="text-2xl text-center">
+            {tagline}{" "}
+            {auth.username && isFavorited && (
+              <button className="absolute mt-2 mr-1" onClick={toggleFavorite}>
+                <span
+                  className="material-symbols-outlined"
+                  style={{
+                    fontVariationSettings: "'FILL' 1",
+                  }}
+                >
+                  favorite
+                </span>
+              </button>
+            )}
+            {auth.username && !isFavorited && (
+              <button className="absolute mt-2 mr-1" onClick={toggleFavorite}>
+                <span className="material-symbols-outlined">favorite</span>
+              </button>
+            )}
+          </h3>
           <p className="text-lg pt-5 text-justify pl-2 pr-2">{overview}</p>
         </div>
       </div>
