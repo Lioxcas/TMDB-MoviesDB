@@ -16,7 +16,7 @@ const SignIn = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/auth/",
+        `${process.env.URL}/api/auth/`,
         {
           email,
           password,
@@ -26,9 +26,7 @@ const SignIn = () => {
           withCredentials: true,
         }
       );
-      const getUser = await axios.get(
-        `http://localhost:3001/api/users/${email}`
-      );
+      const getUser = await axios.get(`${process.env.URL}/api/users/${email}`);
 
       setAuth(response.data);
       setUser(getUser.data);
