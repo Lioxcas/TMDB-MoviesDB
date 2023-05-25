@@ -16,7 +16,7 @@ const SignIn = () => {
 
     try {
       const response = await axios.post(
-        "https://bespoke-truffle-3baa6f.netlify.app/api/auth/",
+        "https://node-tmdb-backy.onrender.com/api/auth/",
 
         {
           email,
@@ -28,7 +28,7 @@ const SignIn = () => {
         }
       );
       const getUser = await axios.get(
-        `https://bespoke-truffle-3baa6f.netlify.app/api/users/${email}`
+        `https://node-tmdb-backy.onrender.com/api/users/${email}`
       );
 
       setAuth(response.data);

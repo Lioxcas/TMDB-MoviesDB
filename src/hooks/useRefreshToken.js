@@ -7,7 +7,7 @@ const useRefreshToken = () => {
   const { setUser } = useUser();
   const refresh = async () => {
     const response = await axios.get(
-      `https://bespoke-truffle-3baa6f.netlify.app/api/auth/refresh`,
+      `https://node-tmdb-backy.onrender.com/api/auth/refresh`,
       {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,

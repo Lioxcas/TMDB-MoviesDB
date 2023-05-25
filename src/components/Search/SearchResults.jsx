@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const SearchResults = ({ data }) => {
-  console.log("mucha data", data);
-
   return (
     <div className="grid grid-cols-4 mx-auto mt-36 gap-4">
       {data &&

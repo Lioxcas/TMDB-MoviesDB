@@ -32,8 +32,8 @@ app.use("/api", routes);
 
 db.sync({ force: false })
   .then(() => {
-    app.listen(process.env.PORT, () => {
-      console.log("Escuchando en el puerto ", process.env.PORT);
+    app.listen(process.env.PORT || 3001, () => {
+      console.log("Escuchando en el puerto ", process.env.PORT || 3001);
     });
   })
   .catch((error) => {
