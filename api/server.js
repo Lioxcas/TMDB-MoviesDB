@@ -17,10 +17,7 @@ app.use("/", express.static(path.join(__dirname, "public")));
 
 app.use(
   cors({
-    origin: [
-      "https://bespoke-truffle-3baa6f.netlify.app",
-      "https://main--bespoke-truffle-3baa6f.netlify.app",
-    ],
+    origin: ["https://bespoke-truffle-3baa6f.netlify.app"],
     allowedHeaders: ["Content-Type", "SameSite", "withCredentials"],
     credentials: true,
   })
