@@ -38,6 +38,7 @@ const login = async (req, res) => {
       httpOnly: true,
       domain: "https://node-tmdb-backy.onrender.com",
       path: "/",
+      sameSite: "lax",
       maxAge: 24 * 60 * 60 * 1000,
     });
     res.json({
