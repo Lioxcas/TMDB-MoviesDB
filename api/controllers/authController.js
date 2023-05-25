@@ -89,6 +89,8 @@ const logout = async (req, res) => {
   if (!cookies?.refreshT) return res.sendStatus(204);
   res.clearCookie("refreshT", {
     httpOnly: true,
+    sameSite: "none",
+    secure: true,
   });
   res.json({ message: "Cookie cleared" });
 };
