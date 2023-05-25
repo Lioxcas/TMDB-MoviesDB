@@ -10,8 +10,6 @@ const SearchBar = () => {
 
   const handleSearch = async (event) => {
     if (event.key === "Enter") {
-      console.log("HOLA");
-      console.log("esta es la query", input);
       const result = await axios
         .get(
           `https://api.themoviedb.org/3/search/multi?api_key=${process.env.API_KEY}&language=en-US&&query=${input}&page=1&include_adult=false`

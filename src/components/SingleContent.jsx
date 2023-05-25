@@ -25,7 +25,7 @@ function SingleContent({
 
   const toggleFavorite = () => {
     if (isFavorited) {
-      axios.delete(`https://bespoke-truffle-3baa6f.netlify.app/api/favorites/${id}`, {
+      axios.delete(`https://node-tmdb-backy.onrender.com/api/favorites/${id}`, {
         data: {
           username: auth.username,
         },
@@ -33,7 +33,7 @@ function SingleContent({
       removeFavorite(id);
       setIsFavorited(false);
     } else {
-      axios.post(`https://bespoke-truffle-3baa6f.netlify.app/api/favorites/${id}`, {
+      axios.post(`https://node-tmdb-backy.onrender.com/api/favorites/${id}`, {
         username: auth.username,
       });
       addFavorite(id);

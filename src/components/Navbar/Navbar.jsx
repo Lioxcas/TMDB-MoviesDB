@@ -25,7 +25,7 @@ const Navbar = () => {
   const handleSignOut = async () => {
     try {
       await axios.post(
-        `https://bespoke-truffle-3baa6f.netlify.app/api/auth/logout`,
+        `https://node-tmdb-backy.onrender.com/api/auth/logout`,
         null,
         {
           withCredentials: true,

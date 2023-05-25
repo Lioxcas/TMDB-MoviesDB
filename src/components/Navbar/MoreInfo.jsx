@@ -22,7 +22,7 @@ export const MoreInfo = () => {
   const toggleFavorite = () => {
     if (isFavorited) {
       axios.delete(
-        `https://bespoke-truffle-3baa6f.netlify.app/api/favorites/${id}`,
+        `https://node-tmdb-backy.onrender.com/api/favorites/${id}`,
         {
           data: {
             username: auth.username,
@@ -33,7 +33,7 @@ export const MoreInfo = () => {
       setIsFavorited(false);
     } else {
       axios.post(
-        `https://bespoke-truffle-3baa6f.netlify.app/api/favorites/${id}`,
+        `https://node-tmdb-backy.onrender.comapi/favorites/${id}`,
         {
           username: auth.username,
         }
