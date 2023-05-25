@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../Search/SearchBar";
+import useUser from "../../hooks/useUser";
 
 const Navbar = () => {
   const [visible, setVisible] = useState(true);
   const { auth } = useAuth();
   const { username } = auth;
+  const { setUser } = useUser();
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,6 +34,7 @@ const Navbar = () => {
           withCredentials: true,
         }
       );
+      setUser({});
       navigate("/");
       window.location.reload();
     } catch {
