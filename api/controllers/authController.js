@@ -36,6 +36,8 @@ const login = async (req, res) => {
 
     res.cookie("refreshT", refreshToken, {
       httpOnly: true,
+      domain: "https://node-tmdb-backy.onrender.com",
+      path: "/",
       maxAge: 24 * 60 * 60 * 1000,
     });
     res.json({
