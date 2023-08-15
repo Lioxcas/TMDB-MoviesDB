@@ -10,6 +10,7 @@ import PersistLogin from "./components/Navbar/PersistLogin";
 import useAuth from "./hooks/useAuth";
 import { MoreInfo } from "./components/Navbar/MoreInfo";
 import SearchResultPage from "./components/Search/SearchResultPage";
+import SearchBar from "./components/Search/SearchBar";
 
 function App() {
   const { auth } = useAuth();
@@ -27,6 +28,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/favorites" element={<GetFavs />} />
           <Route path="/:id" element={<MoreInfo />} />
+          <Route path="/search" element={<SearchBar />} />
           <Route path="/search/:query" element={<SearchResultPage />} />
         </Route>
       </Routes>

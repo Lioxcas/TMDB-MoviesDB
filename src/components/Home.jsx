@@ -7,6 +7,7 @@ const Home = () => {
   const [trending, setTrending] = useState([]);
   const [topR, setTopR] = useState([]);
   const [upcoming, setUpcoming] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
@@ -24,46 +25,63 @@ const Home = () => {
         setTrending(trend.data.results);
         setTopR(topR.data.results);
         setUpcoming(upcom.data.results);
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
       }
     };
     getData();
   }, []);
-
+  /*   {trending && trending[0] ? ( */
   return (
     <>
-      <div className="flex pt-8 w-full justify-center">
-        {trending && trending[0] ? (
-          <>
-            <Banner
-              imgUrl={trending[0].poster_path}
-              title={trending[0].title}
-              description={trending[0].overview}
-            />
-          </>
-        ) : (
-          <p>Loading</p>
-        )}
-      </div>
-      {
-        <div className="">
-          <h3 className="text-xl mb-2 leading-normal ">Trending Movies</h3>
-          {trending && <MovieList movies={trending} />}
+      {isLoading ? (
+        <div className="flex items-center justify-center h-screen w-full">
+          <div className="lds-default">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </div>
-      }
-      {
-        <div className="">
-          <h3 className="text-xl mb-2 leading-normal ">Top Rated Movies</h3>
-          {topR && <MovieList movies={topR} />}
-        </div>
-      }
-      {
-        <div className="">
-          <h3 className="text-xl mb-2 leading-normal ">Upcoming Movies</h3>
-          {upcoming && <MovieList movies={upcoming} />}
-        </div>
-      }
+      ) : (
+        <>
+          <Banner
+            imgID={trending[0].id}
+            imgUrl={trending[0].poster_path}
+            title={trending[0].title}
+            description={trending[0].overview}
+          />
+          <div className="md:mt-4">
+            <h3 className="text-xl mb-4 md:mb-2 leading-normal  ">
+              Trending Movies
+            </h3>
+            {trending && <MovieList movies={trending} />}
+          </div>
+
+          <div className="">
+            <h3 className="text-xl mb4 md:mb-2 leading-normal ">
+              Top Rated Movies
+            </h3>
+            {topR && <MovieList movies={topR} />}
+          </div>
+
+          <div className="">
+            <h3 className="text-xl mb-4 md:mb-2 leading-normal ">
+              Upcoming Movies
+            </h3>
+            {upcoming && <MovieList movies={upcoming} />}
+          </div>
+        </>
+      )}
     </>
   );
 };
