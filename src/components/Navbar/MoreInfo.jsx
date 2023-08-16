@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import axios from "../../axios";
 import useAuth from "../../hooks/useAuth";
+import useUser from "../../hooks/useUser";
 import Cast from "../Cast";
 
 export const MoreInfo = () => {
@@ -12,9 +13,10 @@ export const MoreInfo = () => {
   const [isFavorited, setIsFavorited] = useState(false);
   const [isLoading, setisLoading] = useState(true);
 
-  const setFav = () => {
-    axios.post(`http://localhost:3001/api/favorites/${id}`, {
-      username: auth.username,
+
+  useEffect(() => {
+    const isMovieFavorite = user.favorites.some((favorite) => {
+      return favorite === parseInt(id);
     });
     setIsFavorited(isMovieFavorite);
   }, []);
@@ -153,4 +155,4 @@ export const MoreInfo = () => {
   );
 };
 
-/* className="mt-10 flex justify-start min-h-screen" */
+

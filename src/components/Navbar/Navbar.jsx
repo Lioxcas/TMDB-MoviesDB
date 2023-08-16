@@ -7,13 +7,14 @@ import SearchBar from "../Search/SearchBar";
 import useUser from "../../hooks/useUser";
 import cookie from "../../assets/cookie.png";
 
+
+
 const Navbar = () => {
   const [visible, setVisible] = useState(true);
   const { auth } = useAuth();
   const { username } = auth;
   const { setUser } = useUser();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,12 +30,14 @@ const Navbar = () => {
 
   const handleSignOut = async () => {
     try {
-      await axios.post("http://localhost:3001/api/auth/logout", null, {
-        withCredentials: true,
-        headers: {
-          SameSite: "None",
-        },
-      });
+      await axios.post(
+        `https://node-tmdb-backy.onrender.com/api/auth/logout`,
+        null,
+        {
+          withCredentials: true,
+        }
+      );
+      setUser({});
       navigate("/");
       window.location.reload();
     } catch {

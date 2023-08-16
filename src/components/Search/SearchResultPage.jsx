@@ -5,7 +5,6 @@ import SearchBar from "./SearchBar";
 
 const SearchResultPage = () => {
   const location = useLocation();
-  console.log("LOCATION", location);
 
   const searchQuery = location.state?.searchQuery || [];
 

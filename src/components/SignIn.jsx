@@ -5,18 +5,21 @@ import useAuth from "../hooks/useAuth";
 import useUser from "../hooks/useUser";
 import { Link } from "react-router-dom";
 
+
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { setAuth } = useAuth();
+  const { setUser, user } = useUser();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/auth/",
+        "https://node-tmdb-backy.onrender.com/api/auth/",
+
         {
           email,
           password,
@@ -26,7 +29,12 @@ const SignIn = () => {
           withCredentials: true,
         }
       );
+      const getUser = await axios.get(
+        `https://node-tmdb-backy.onrender.com/api/users/${email}`
+      );
+
       setAuth(response.data);
+      setUser(getUser.data);
       navigate("/");
     } catch (error) {
       console.error(error);

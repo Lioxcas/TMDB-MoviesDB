@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../axios";
 import useAuth from "../../hooks/useAuth";
+import useUser from "../../hooks/useUser";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const GetFavs = () => {
   const [favs, setFavs] = useState([]);
   const navigate = useNavigate();
   const { auth } = useAuth();
+  const { user, removeFavorite } = useUser();
   const username = auth.username;
 
   const favorites = async () => {
     const res = await axios.get(
-      `http://localhost:3001/api/favorites/${username}`
+      `https://node-tmdb-backy.onrender.com/api/favorites/${username}`
     );
     setFavs(res.data);
   };
@@ -22,11 +24,15 @@ const GetFavs = () => {
 
   const deleteFav = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/api/favorites/${id}`, {
-        data: {
-          username: username,
-        },
-      });
+      removeFavorite(id);
+      await axios.delete(
+        `https://node-tmdb-backy.onrender.com/api/favorites/${id}`,
+        {
+          data: {
+            username: username,
+          },
+        }
+      );
       setTimeout(() => {
         favorites();
       }, 350);

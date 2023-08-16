@@ -1,8 +1,33 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 
-const Banner = ({ imgUrl, title, description }) => {
+const Banner = ({ imgID, imgUrl, title, description }) => {
+  const [resulta, setResulta] = useState([]);
+
+  useEffect(() => {
+    const url = `https://api.themoviedb.org/3/movie/${imgID}/images`;
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization: `Bearer ${process.env.ACCESS}`,
+      },
+    };
+    const getBanner = async () => {
+      const result = await axios
+        .get(url, options)
+        .then((response) => {
+          setResulta(response.data.backdrops[0].file_path);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    };
+    getBanner();
+  }, []);
+
+
   return (
     <>
       {resulta && (

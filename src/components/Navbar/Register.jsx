@@ -17,7 +17,7 @@ const Register = () => {
 
     if (password === confirmPassword) {
       axios
-        .post("/signUp", {
+        .post("https://node-tmdb-backy.onrender.com/api/users/signUp", {
           username,
           email,
           password,
