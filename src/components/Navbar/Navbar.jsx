@@ -7,8 +7,6 @@ import SearchBar from "../Search/SearchBar";
 import useUser from "../../hooks/useUser";
 import cookie from "../../assets/cookie.png";
 
-
-
 const Navbar = () => {
   const [visible, setVisible] = useState(true);
   const { auth } = useAuth();
@@ -92,9 +90,12 @@ const Navbar = () => {
                     Sign Up
                   </li>
                 </Link>
-                <li className="flex items-center justify-center  text-sm text-center font-semibold text-gray-200 border-white h-8 cursor-pointer hover:bg-white hover:text-amber-800 rounded-b-lg">
+                <Link
+                  to="search"
+                  className="flex items-center justify-center  text-sm text-center font-semibold text-gray-200 border-white h-8 cursor-pointer hover:bg-white hover:text-amber-800 rounded-b-lg"
+                >
                   Search
-                </li>
+                </Link>
               </ul>
             )}
             {username && isMenuOpen && (
@@ -116,48 +117,16 @@ const Navbar = () => {
                 >
                   Sign Out
                 </a>
-                <li className="flex items-center justify-center  text-sm text-center font-semibold text-gray-200 border-white h-8 cursor-pointer hover:bg-white hover:text-amber-800 rounded-b-lg">
+                <Link
+                  to="search"
+                  className="flex items-center justify-center  text-sm text-center font-semibold text-gray-200 border-white h-8 cursor-pointer hover:bg-white hover:text-amber-800 rounded-b-lg"
+                >
                   Search
-                </li>
+                </Link>
               </ul>
             )}
           </div>
         </div>
-        {/* <div className="block box-border flex-grow lg:flex lg:items-center lg:w-1/6 max-w-xs align-middle">
-          <div className="text-sm lg:flex-grow"></div>
-          {username ? (
-            <div>
-              <span>{username}</span>
-              <Link
-                to="/favorites"
-                className="inline-block box-border text-sm px-4 py-2 leading-none rounded bg-white text-amber-800 border-amber-800 hover:border-transparent hover:text-white hover:bg-purple-500 mt-4 lg:mt-0 ml-2"
-              >
-                Favorites
-              </Link>
-              <a
-                onClick={handleSignOut}
-                className="inline-block box-border text-sm px-4 py-2 leading-none rounded text-gray-200 border-white hover:border-transparent hover:text-purple-500 hover:bg-gray-200 mt-4 lg:mt-0 cursor-pointer"
-              >
-                Sign Out
-              </a>
-            </div>
-          ) : (
-            <div>
-              <Link
-                to="signin"
-                className="inline-block w-24 text-center box-border text-sm px-4 py-2 leading-none bg-amber-800  font-semibold rounded-md text-gray-200 border-white hover:border-transparent hover:text-amber-800 hover:bg-gray-200 mt-4 lg:mt-0"
-              >
-                Login
-              </Link>
-              <Link
-                to="signup"
-                className="inline-block w-24 text-center box-border text-sm px-4 py-2 leading-none rounded-md bg-white text-amber-800 font-semibold  hover:border-transparent hover:text-white hover:bg-amber-800 mt-4 lg:mt-0 ml-2"
-              >
-                Sign Up
-              </Link>
-            </div>
-          )}
-        </div> */}
       </div>
     </nav>
   );
