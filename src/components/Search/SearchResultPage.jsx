@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router";
 import SearchResults from "./SearchResults";
+import SearchBar from "./SearchBar";
 
 const SearchResultPage = () => {
   const location = useLocation();
@@ -9,6 +10,7 @@ const SearchResultPage = () => {
 
   return (
     <div>
+      <SearchBar />
       <SearchResults data={searchQuery} />
     </div>
   );

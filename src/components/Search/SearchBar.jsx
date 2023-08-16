@@ -29,8 +29,8 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="flex-grow justify-center left-1/2 right-1/2 lg:flex lg:items-center lg:w-auto">
-      <div className="relative w-full max-w-md lg:max-w-2xl mx-auto text-white text-3xl lg:block hidden">
+    <div className="flex-grow justify-center left-1/2 right-1/2 lg:flex lg:items-center mt-24 lg:w-auto ">
+      <div className="relative w-full items-center justify-center max-w-md lg:max-w-2xl mx-auto text-white text-3xl lg:block ">
         <input
           type="search"
           name="search"
