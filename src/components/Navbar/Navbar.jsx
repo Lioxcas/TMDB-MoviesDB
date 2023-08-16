@@ -118,7 +118,7 @@ const Navbar = () => {
                   Sign Out
                 </a>
                 <Link
-                  to="search"
+                  to="/search"
                   className="flex items-center justify-center  text-sm text-center font-semibold text-gray-200 border-white h-8 cursor-pointer hover:bg-white hover:text-amber-800 rounded-b-lg"
                 >
                   Search
