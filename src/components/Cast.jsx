@@ -21,7 +21,7 @@ const Cast = () => {
   }, []);
 
   return (
-    <div className="mt-[750px] md:mt-[1200px] lg:mt-[800px] xl:mt-[700px] ">
+    <div className="mt-[880px] md:mt-[1200px] lg:mt-[800px] xl:mt-[700px] ">
       <h3 className="text-2xl pt-4 pb-2 underline">Cast</h3>
       <div className="flex gap-4 overflow-x-auto">
         {cast &&

@@ -61,7 +61,7 @@ const Home = () => {
             description={trending[0].overview}
           />
           <div className="md:mt-4">
-            <h3 className="text-xl mb-4 md:mb-2 leading-normal  ">
+            <h3 className="text-xl pt-60 xl:pt-16 md:mb-2 leading-normal  ">
               Trending Movies
             </h3>
             {trending && <MovieList movies={trending} />}

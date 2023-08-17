@@ -84,7 +84,6 @@ function SingleContent({
       <Link to={`/${id}`}>
         <img
           className={`shadow-sm rounded-md`}
-          className="w-[220px] h-[330px] shadow-sm rounded-md"
           src={`https://www.themoviedb.org/t/p/w220_and_h330_face${poster_path}`}
           alt={title}
         />
@@ -99,4 +98,3 @@ function SingleContent({
 }
 
 export default SingleContent;
-
